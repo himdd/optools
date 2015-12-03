@@ -1,6 +1,6 @@
 ## 安装
 ```bash
-git clone git@git.hunantv.com:arch/optools.git
+git@github.com:himdd/optools.git
 sh ./optools/script/install.sh
 source ~/.bashrc
 ```
