@@ -1,24 +1,17 @@
 #!/bin/bash
 #miaodongdong
 file_path=$(dirname $(readlink -f $0))
-module_path=$file_path"/../module"
-app_path=$file_path"/../app"
 CMD=""
+DQD_OP_LIST="/usr/bin/python /home/work/opbin/itools/modules.py list "
+DQD_OP_LISTIP="/usr/bin/python /home/work/opbin/itools/modules.py listip"
 
-if [ "$1" == "-a" ];then
-	echo "********************all app*************************"
-	CMD="ls $app_path | xargs -n1" 
-  	echo $CMD | bash
-elif [ "$1" == "-m" ];then
-	echo "******************** module about $2 *************************"
-	CMD="cat $app_path/$2" 
-  	echo $CMD | bash
-elif [ "$1" == "-l" ];then
+if [ "$1" == "-l" ];then
 	echo "******************** machine about $2*************************"
-	CMD="cat $module_path/$2" 
+	CMD="$DQD_OP_LISTIP $2"
+echo $CMD
   	echo $CMD | bash
 elif [ "$1" == "-i" ];then
-	CMD="cat $module_path/$2" 
+	CMD="$DQD_OP_LIST $2"
 	if [ "$3" == "" ];then
 		echo "******************** machine about $2*************************"
   		echo $CMD | bash
@@ -27,12 +20,12 @@ elif [ "$1" == "-i" ];then
 		#echo $CMD | bash
 		for val in `echo $CMD | bash`;do
 		echo "********************$val*************************"
-			ssh -o "StrictHostKeyChecking no" $val $4
+			sudo ssh  work@$val $4
 		done
 	elif [ "$3" == "-s" ];then
 		for val in `echo $CMD | bash`;do
 		echo "********************$val*************************"
-			ssh -o "StrictHostKeyChecking no" $val "bash"<$4
+			sudo ssh  work@$val "bash"<$4
 		done
 	else
 	  echo "cmd not support"
