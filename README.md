@@ -4,23 +4,8 @@ git clone https://github.com/himdd/optools.git
 sh ./optools/script/install.sh
 source ~/.bashrc
 ```
-## 使用
-
-在app文件夹下，放以app名为名的文件，文件内为该app内的模块名，一行一个。
-
-在module文件夹下，放以模块名为名的文件，文件内为机器列表，一行一个。
-
-所有machine都要和中转机建立信任关系
 
 ## 命令
-### 查看所有app
-```bash
-optools -a
-```
-### 查看某app下的module
-```bash
-optools -m [app]
-```
 ### 查看某module下的machine
 ```bash
 optools -l [module]
@@ -33,12 +18,6 @@ optools -i [module] -s [path]
 
 ### 例子
 ```bash
-[miaodongdong@com optools]$ optools -a
-********************all app*************************
-ad
-[miaodongdong@com optools]$ optools -m ad
-******************** module about ad *************************
-ad_monitor
 [miaodongdong@com optools]$ optools -l ad_monitor
 ******************** machine about ad_monitor*************************
 10.100.5.85
