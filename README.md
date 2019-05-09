@@ -1,6 +1,6 @@
 ## 安装
 ```bash
-git clone https://github.com/himdd/optools.git
+git clone -b dqd https://github.com/himdd/optools.git
 sh ./optools/script/install.sh
 source ~/.bashrc
 ```
